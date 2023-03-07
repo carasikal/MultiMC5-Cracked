@@ -20,35 +20,23 @@ jobs:
       - name: Checkout Submodules
         run: git submodule update --init
 
-      - name: Cache Qt
-        uses: actions/cache@v2.1.5
-        id: qt-cached
-        with:
-          path: "D:/Qt"
-          key: ${{ runner.os }}-qt56-installed-d
-
-      - name: Cache Qt Installer
-        uses: actions/cache@v2.1.5
-        if: steps.qt-cached.outputs.cache-hit != 'true'
-        id: installer-cached
-        with:
-          path: "installer.exe"
-          key: ${{ runner.os }}-qt56-installer
-
       - name: Create QtAccount File
         if: steps.qt-cached.outputs.cache-hit != 'true'
         run: |
           mkdir C:/Users/runneradmin/AppData/Roaming/Qt/
           curl https://raw.githubusercontent.com/fjandrad/development-env/master/Tools/qtaccount.ini --output C:/Users/runneradmin/AppData/Roaming/Qt/qtaccount.ini
 
-      - name: Download Qt Installer
-        if: steps.installer-cached.outputs.cache-hit != 'true' && steps.qt-cached.outputs.cache-hit != 'true'
-        run: curl https://download.qt.io/new_archive/qt/5.6/5.6.3/qt-opensource-windows-x86-mingw492-5.6.3.exe --output installer.exe
-
       - name: Install Qt
-        if: steps.qt-cached.outputs.cache-hit != 'true'
-        shell: cmd
-        run: installer.exe -v --accept-licenses --default-answer --confirm-command install qt.563.win32_mingw49 --root D:/Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '5.6.3'
+          arch: 'win32_mingw49'
+          dir: 'D:/Qt'
+          cache: 'true'
+          cache-key-prefix: 'qt-cached'
+          setup-python: 'true'
+          tools: 'tools_qtcreator,qt.tools.qtcreator'
+          extra: '--external 7z'
 
       - name: Setup CMake
         run: |
