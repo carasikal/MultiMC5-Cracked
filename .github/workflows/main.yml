@@ -30,7 +30,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: '5.9.9'
-          arch: 'win32_mingw49'
+          arch: 'win32_mingw53'
           dir: 'D:/Qt'
           cache: 'true'
           cache-key-prefix: 'qt-cached'
