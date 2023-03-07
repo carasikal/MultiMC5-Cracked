@@ -70,6 +70,13 @@ jobs:
         shell: cmd
         if: steps.build-cached.outputs.cache-hit != 'true'
         run: |
+          dir D:\Qt
+          dir D:\Qt\5.9.9
+          dir D:\Qt\5.9.9\mingw53_32
+          dir D:\Qt\5.9.9\mingw53_32\bin
+          dir D:\Qt\Tools\
+          dir D:\Qt\Tools\mingw53_32\
+          dir D:\Qt\Tools\mingw53_32\bin
           set PATH=D:\Qt\5.9.9\mingw53_32\bin;D:\Qt\Tools\mingw53_32\bin;
           set PATH=%CD%\zlib;%CD%\zlib\bin;%CD%\zlib\lib;%CD%\zlib\include;%PATH%
           set PATH=%CD%\OpenSSL;%PATH%
