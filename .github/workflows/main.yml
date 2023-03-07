@@ -32,9 +32,9 @@ jobs:
           version: '5.9.9'
           arch: 'win32_mingw53'
           dir: 'D:'
-          cache: 'true'
-          cache-key-prefix: 'qt-cached'
-          setup-python: 'true'
+#           cache: 'true'
+#           cache-key-prefix: 'qt-cached'
+#           setup-python: 'true'
           tools: 'tools_qtcreator,qt.tools.qtcreator'
           extra: '--external 7z'
 
