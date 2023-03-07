@@ -31,7 +31,7 @@ jobs:
         with:
           version: '5.9.9'
           arch: 'win32_mingw53'
-          dir: 'D:/Qt'
+          dir: 'D:'
           cache: 'true'
           cache-key-prefix: 'qt-cached'
           setup-python: 'true'
@@ -70,22 +70,22 @@ jobs:
         shell: cmd
         if: steps.build-cached.outputs.cache-hit != 'true'
         run: |
-          set PATH=D:\Qt\5.6.3\mingw49_32\bin;D:\Qt\Tools\mingw492_32\bin;
+          set PATH=D:\Qt\5.9.9\mingw53_32\bin;D:\Qt\Tools\mingw53_32\bin;
           set PATH=%CD%\zlib;%CD%\zlib\bin;%CD%\zlib\lib;%CD%\zlib\include;%PATH%
           set PATH=%CD%\OpenSSL;%PATH%
           set PATH=C:\hostedtoolcache\windows\Java_Zulu_jdk\8.0.292-10\x86\bin;%PATH%
           set PATH=%CD%\cmake-3.20.2-windows-i386\bin;%PATH%
-          set CC=D:\Qt\Tools\mingw492_32\bin\gcc.exe
-          set CXX=D:\Qt\Tools\mingw492_32\bin\g++.exe
+          set CC=D:\Qt\Tools\mingw53_32\bin\gcc.exe
+          set CXX=D:\Qt\Tools\mingw53_32\bin\g++.exe
           mkdir build
           cd build
-          copy D:\Qt\Tools\mingw492_32\bin\mingw32-make.exe D:\Qt\Tools\mingw492_32\bin\make.exe
+          copy D:\Qt\Tools\mingw53_32\bin\mingw32-make.exe D:\Qt\Tools\mingw53_32\bin\make.exe
           cmake -DCMAKE_BUILD_TYPE=Release -DMultiMC_NOTIFICATION_URL:STRING=https://files.multimc.org/notifications.json -DCMAKE_INSTALL_PREFIX:PATH="D:/MultiMC-Cracked" -DMultiMC_CHANLIST_URL=https://files.multimc.org/update/win32/channels.json -DMultiMC_PASTE_EE_API_KEY:STRING=utLvciUouSURFzfjPxLBf5W4ISsUX4pwBDF7N1AfZ -DMultiMC_ANALYTICS_ID:STRING=UA-87731965-2 -DMultiMC_LAYOUT=win-bundle -DMultiMC_VERSION_BUILD=2065 -DMultiMC_VERSION_CHANNEL=refs/heads/develop -DMultiMC_BUILD_PLATFORM=win32 -G "MinGW Makefiles" ..
 
       - name: Compile
         shell: cmd
         run: |
-          set PATH=D:\Qt\5.6.3\mingw49_32\bin;D:\Qt\Tools\mingw492_32\bin;
+          set PATH=D:\Qt\5.9.9\mingw53_32\bin;D:\Qt\Tools\mingw53_32\bin;
           set PATH=%CD%\zlib;%CD%\zlib\bin;%PATH%
           set PATH=%CD%\OpenSSL;%PATH%
           set PATH=C:\hostedtoolcache\windows\Java_Zulu_jdk\8.0.292-10\x86\bin;%PATH%
@@ -98,7 +98,7 @@ jobs:
       - name: Test
         shell: cmd
         run: |
-          set PATH=D:\Qt\5.6.3\mingw49_32\bin;D:\Qt\Tools\mingw492_32\bin;
+          set PATH=D:\Qt\5.9.9\mingw53_32\bin;D:\Qt\Tools\mingw53_32\bin;
           set PATH=%CD%\zlib;%CD%\zlib\bin;%PATH%
           set PATH=%CD%\OpenSSL;%PATH%
           set PATH=C:\hostedtoolcache\windows\Java_Zulu_jdk\8.0.292-10\x86\bin;%PATH%
@@ -111,7 +111,7 @@ jobs:
       - name: Install
         shell: cmd
         run: |
-          set PATH=D:\Qt\5.6.3\mingw49_32\bin;D:\Qt\Tools\mingw492_32\bin;
+          set PATH=D:\Qt\5.9.9\mingw53_32\bin;D:\Qt\Tools\mingw53_32\bin;
           set PATH=%CD%\zlib;%CD%\zlib\bin;%PATH%
           set PATH=%CD%\OpenSSL;%PATH%
           set PATH=C:\hostedtoolcache\windows\Java_Zulu_jdk\8.0.292-10\x86\bin;%PATH%
