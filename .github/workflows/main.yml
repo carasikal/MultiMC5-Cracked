@@ -29,7 +29,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: '5.6.3'
+          version: '5.9.9'
           arch: 'win32_mingw49'
           dir: 'D:/Qt'
           cache: 'true'
